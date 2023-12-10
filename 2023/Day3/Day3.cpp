@@ -19,7 +19,7 @@ void part1()
   std::ifstream myfile;
   myfile.open ("input.txt");
 
-  int ID = 1;
+  int ID  = 1;
   int Sum = 0;
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -28,11 +28,16 @@ void part1()
   std::getline(myfile, line);
   std::getline(myfile, line_bottom);
 
-  for(int i = 0; i<line.length(); i++)
+  int iPartNumber        = 0;
+  int increment          = 1;
+
+  for(int i = 0; i<line.length(); i+=std::to_string(iPartNumber).length())
   { 
     if(isdigit(line[i]))
     {
-      int iPartNumber = IdentifyPartNumber(line[i], line, i);
+      iPartNumber = IdentifyPartNumber(line[i], line, i);
+      increment = std::to_string(iPartNumber).length();
+      
       if(IsAdjacent(line, line_bottom))
       {
         Sum+=iPartNumber;
@@ -50,49 +55,48 @@ void part1()
   
   while (std::getline(myfile, line_bottom))
   {
+      int iPartNumber = 0;
+      int increment   = 1;
 
-    for(int i = 0; i<line.length(); i++)
-    { 
-      for(int i = 0; i<line.length(); i++)
-      { 
-        if(isdigit(line[i]))
+        for(int i = 0; i<line.length(); i+=increment)
+        { 
+          if(isdigit(line[i]))
+          {
+            iPartNumber = IdentifyPartNumber(line[i], line, i);
+            increment = std::to_string(iPartNumber).length();
+            
+          }
+          else
+          increment = 1;
+        }
+  
+        if(ID = 140)
         {
-          int iPartNumber = IdentifyPartNumber(line[i], line, i);
-          
-          if(IsAdjacent(line, line_bottom, line_top))
+          if(IsAdjacent(line, line_top))
           {
             Sum+=iPartNumber;
-          }
-
+          }  
         }
-      }
-
-      if(ID = 140)
-      {
-        if(IsAdjacent(line, line_top))
+        else if(IsAdjacent(line, line_bottom) || IsAdjacent(line, line_top))
         {
-        Sum+=iPartNumber;
-        }  
-      }
-      else if(IsAdjacent(line, line_bottom) || IsAdjacent(line, line_top)
-      {
-        Sum+=iPartNumber;
-      }
-    }
-
-    
-    line_top = line;
-    line = line_bottom;
+          Sum+=iPartNumber;
+        }
+      
+      
+      line_top = line;
+      line = line_bottom;
   }
-
 }
 
-void part2()
-{
 
+
+
+int IdentifyPartNumber(char firstdigit, std::string line, std::size_t index)
+{
+  return std::__cxx11::stoi(line, index);
 }
 
-double IdentifyPartNumber(int firstdigit, std::string line, int index)
+bool IsAdjacent(std::string line, std::string bottomline )
 {
-
+  return true;
 }
