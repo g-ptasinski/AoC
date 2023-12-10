@@ -5,7 +5,6 @@
 #include <fstream>
 #include <algorithm>
 #include "Day2.h"
-#include <map>
 
 int main ()
 {
