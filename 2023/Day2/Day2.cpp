@@ -10,7 +10,7 @@
 int main ()
 {
   part1();
-  //part2();
+
   return 0;
 }
 
@@ -41,11 +41,6 @@ void part1()
 
 
   myfile.close();
-}
-
-void part2()
-{
-
 }
 
 int   Game::GetGameID()
