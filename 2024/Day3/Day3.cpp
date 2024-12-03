@@ -7,11 +7,9 @@
 void part1();
 void part2();
 std::string processInput();
-std::string parsePart2(std::string contents);
 
 int main ()
 {
-
   part1();
   part2();
   return 0;
